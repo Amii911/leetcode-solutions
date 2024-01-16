@@ -1,0 +1,26 @@
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        array1 = []
+        array2 = []
+        set1 = set(nums1)
+        set2 = set(nums2)
+
+        for num in set1:
+            if num not in set2:
+                array1.append(num)
+        for num in set2:
+            if num not in set1:
+                array2.append(num)
+
+        return [array1 , array2]
+
+        
+'''
+we are going to get two arr
+need to return a new arr that will have the numbers that are not present in the individual arrays
+
+==> if there is no diff, return two empty arrays in a single arr
+
+- loop through one and two compare the numbs in each arry and apprend them to a new array
+using set to remove repeated values
+'''
