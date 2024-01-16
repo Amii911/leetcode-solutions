@@ -1,0 +1,26 @@
+#Twopointers **need to try again.... **
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        #string to return at the end
+        resStr = ""
+
+        #pointers for word 1 and word 2
+        p1 = 0
+        p2 = 0
+
+        #as long as either of th epointers has not reached the end of its word
+        while p1 < len(word1) or p2 < len(word2):
+            #add char from word 1 to string and incre pointer
+            if p1 < len(word1):
+                resStr += word1[p1]
+                p1 += 1
+            #add char from word 2 to string and incre pointer
+            if p2 < len(word2):
+                resStr += word2[p2]
+                p2 += 1
+        #return string
+        return resStr
+    
+
+
+    #can use recursive and use queues
