@@ -1,0 +1,38 @@
+def generate_parentheses(n):
+  answer = []
+  def dfs(left_index, array, right_index, n=n):
+    if left_index == n == right_index:
+      nonlocal answer
+      answer.append(''.join(array[:]))
+      return
+
+    if left_index < n:
+      array.append('(')
+      dfs(left_index + 1, array, right_index)
+      array.pop()
+
+    if left_index > right_index:
+      array.append(')')
+      dfs(left_index, array, right_index + 1)
+      array.pop()
+
+  dfs(0, [], 0)
+  return answer
+  
+
+'''
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+Input: n = 3
+Output: ["((()))","(()())","(())()","()(())","()()()"]
+given an int need to return all possible parenth able to create with that num (n)
+
+i = 1
+o = ()
+
+i = 2
+o = (()), () ()
+
+if im given a n i need it to generate all possible ().... so how can I double or show diff varitions of parenth with '(' + ')'
+
+no clue on how to approach.... a brute force hard coding way?
+'''
