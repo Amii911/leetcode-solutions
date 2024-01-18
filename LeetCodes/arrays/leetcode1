@@ -32,4 +32,19 @@ for i in range(len(nums)):
             hash_sum[i] = nums[i]
         print(hash_sum)
 
+
+two - point approach
+        sorted_nums = sorted(enumerate(nums), key=lambda x: x[1])
+        left_point = 0
+        right_point = len(nums) - 1
+
+        while left_point < right_point:
+            current_sum = sorted_nums[left_point][1] + sorted_nums[right_point][1]
+            if current_sum == target:
+                return [sorted_nums[left_point][0], sorted_nums[right_point][0]]
+            elif current_sum < target:
+                left_point += 1
+            else:
+                right_point -= 1
+
 '''
