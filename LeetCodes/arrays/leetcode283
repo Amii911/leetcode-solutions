@@ -1,0 +1,45 @@
+def teleport_zeros(nums):
+  left_index = 0
+  for right_index, right_val in enumerate(nums[1:], 1):
+
+    left_val = nums[left_index]
+    if left_val == 0 and right_val != 0:
+      nums[left_index], nums[right_index] = nums[right_index], nums[left_index]
+
+    left_val = nums[left_index]
+    if left_val != 0:
+      left_index += 1
+  return nums
+
+"""
+two pointers appraoch
+will be given an arr. must re order the arrso that all 0 and at the end of arr
+
+so 
+i = [ 0, 1]
+o = [ 1, 0]
+
+floop through arr and locate 0 then return to end of err
+0 1 2 3
+^ ^
+
+1 0 2 3
+  ^ ^
+1 2 0 3
+     ^ ^
+
+1 2 3 0
+
+1, 0, 2, 3
+==========
+
+0 0 1 2 3
+^    ^
+
+1 0 0 2 3
+  ^    ^
+
+2 pointers
+
+move zeroes
+"""
