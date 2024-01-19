@@ -1,0 +1,28 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        Map = {")": "(", "]": "[", "}": "{"}
+        stack = []
+
+        for c in s:
+            if c not in Map:
+                stack.append(c)
+                continue
+            if not stack or stack[-1] != Map[c]:
+                return False
+            stack.pop()
+
+        return not stack
+
+'''
+determine is the string is valid = true. false != valid
+s = [], s= [] s!= [[]]], s=() s!= {]}
+
+i = [()] 
+o = true
+
+two pointers?
+
+stack - LIFO
+When you encounter an opening bracket, push it to the top of the stack.
+When you encounter a closing bracket, check if the top of the stack was the opening for it. If yes, pop it from the stack. Otherwise, return false.
+'''
