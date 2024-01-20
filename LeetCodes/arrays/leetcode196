@@ -12,3 +12,8 @@ class Solution:
                     vote -= 1
             return cand
         return boyer_moore_voting()
+    
+'''
+no clue solution. Solevd with Tom (BBM)
+
+'''
