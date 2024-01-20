@@ -1,0 +1,26 @@
+#Python3
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        hash_nums = {}
+
+        for num in nums:
+            if num in hash_nums:
+                return True
+            hash_nums[num] = True
+        return False
+        
+
+
+
+"""
+U - in nums array, if there are AT LEAST TWO values that will appear, return TRUE, if not return FALSE. Im guessing if there is nums = [0] == FALSE
+
+B - 
+loop through nums - check each number and compare to if any numbr repeats - return true
+ex. 1, 2, 3, 1 = true
+
+compare each number to the first number - if any match then return true
+
+store the numbers into a hash map - no numbers in hash can be duplicated - so return ture once a value is repeated
+
+"""
