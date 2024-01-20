@@ -1,0 +1,14 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        def boyer_moore_voting(nums = nums):
+            cand = None
+            vote = 0
+            for val in nums:
+                if not cand or not vote:
+                    cand = val
+                if cand == val:
+                    vote += 1
+                else:
+                    vote -= 1
+            return cand
+        return boyer_moore_voting()
