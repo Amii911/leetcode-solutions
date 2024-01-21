@@ -1,0 +1,33 @@
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        set1 = set(nums1)
+        set2 = set(nums2)
+
+        return list(set2 & set1)
+
+
+'''
+from two arry return the elements that are similar in both, no duplicates
+
+i = 1[1,2,3,4] 2[1,2,2,3,6]
+o = [1,2,3]
+
+i = 1[2,3,4,5] 2[9,8,7,6]
+o = []
+
+does ordering matter? no?
+cant have repeated elements in output?
+
+brute force? looping through both arrays and adding to result=[] any repeated elements. but how to make sure none are repeated?
+        l=[]
+        for i in range(len(nums1)):
+            for j in range(len(nums2)):
+                if nums1[i]==nums2[j] and nums1[i] not in l:
+                    l.append(nums1[i])
+        return(l)
+
+two pointers? one pointing at first arr and comparing to second array to compare
+
+hash set? keeping track of what in arr 1 and arr2, able to keep unique
+'''
+    
