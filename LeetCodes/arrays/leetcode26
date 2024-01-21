@@ -1,0 +1,28 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        left = 0
+        right = 0
+        while right < len(nums):
+            if nums[left] == nums[right]:
+                right += 1
+            else:
+                left += 1
+                nums[left] = nums[right]
+                right +=1
+        return left + 1 
+        # k = 1 #initialize left point
+        # #r pointer will go through array and start at 1
+        # for r in range(1, len(nums)):
+        #     if nums[r] != nums[r - 1]: #is the value new or something we have seen, if not the same we have a unique value
+        #         nums[k] = nums[r] #having that unique value be placed at l
+        #         k += 1 #increment the left pointer
+        # return k
+
+
+'''
+sorted in ascending order ... 0,1,2,3 //output => 4
+but there will be duplicates... our function needs to remove the duplicates and returns how many unnique values there are in the array
+to keep unique values a hash?
+right pointer going through array
+left pointer showing us where it will be index
+'''
