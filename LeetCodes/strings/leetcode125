@@ -1,0 +1,55 @@
+#worked on with logan
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        
+        lower_s = s.lower()
+        final_string = ""
+        
+        for char in lower_s:
+            if char.isalnum():
+                final_string += char
+        
+        left = 0
+        right = len(final_string) - 1
+
+        while left < right:
+            if final_string[left] == final_string[right]:
+                left += 1
+                right -= 1
+            else:
+                return False
+        
+        return True
+
+
+        
+
+
+
+'''
+return TRUE = s = palindrome
+FALSE = s != palindrome
+
+make sure are char are .lower()
+
+isalnum tests an integer value to determine whether it is an alphabetic (uppercase or lowercase) or numeric character. isalnum returns 0 if the character is not alphanumeric, or a nonzero value if it is alphanumeric.
+
+two pointers?
+have a left at 0
+right at [-1]
+
+
+
+submitted solution:
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        l = ''
+        for c in s:
+            if c.isalnum() :
+                l += c
+        l = l.lower()
+        if l == l[::-1]:
+            return True
+        else:
+            return False
+'''
