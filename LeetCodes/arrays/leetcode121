@@ -21,13 +21,25 @@ return the max amount of profit you can achieve. you can achieve this by choosin
 i = [1,2,3,4]
 o = buy on 0:1 and sell on 3:4 reutnr 3
 
+i = [2,2,2,2]
+o = 0
+
 can i re order array? pick arr[0] sell on arr[-1]
 
 brute force? looping through the whole arr to see that smallest num is before the highest num in the array
+        max_profit = 0
+
+        for i in range(len(prices)):
+            for j in range(i+1, len(prices)):
+                curr_profit = prices[j] - prices[i]
+                if curr_profit > max_profit:
+                    max_profit = curr_profit
+        return max_profit
 
 two pointers? having a point on one day and another point on another day 
 l = buy
 r = sell
+
 storing max_profit = storing when the diff between l & r 
 time = O(n)
 space = O(1)
