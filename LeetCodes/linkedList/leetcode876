@@ -1,0 +1,37 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
+
+
+'''
+reutrn the middle of the linked list
+if the list even return the second link in the list 
+
+if odd - reutrn middle
+if even - return the second of the two in the middle
+
+are we returning an array?
+
+i --> 1-2-3-4 
+o --> 3-4
+
+i --> 1-2-3
+o --> 2
+
+-- need to locate the middle link so maybe two pointers? 
+-- fast , slow? 
+-- need to loop through link.. 
+    fast will go every two and slow going one.
+
+'''
