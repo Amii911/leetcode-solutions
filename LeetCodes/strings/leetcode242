@@ -1,0 +1,48 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        hash_anagram = {}
+
+        for char in s:
+            if char in hash_anagram:
+                hash_anagram[char] += 1
+            else:
+                hash_anagram[char] = 1
+      
+        for char in t:
+            if char not in hash_anagram:
+                return False
+            else:
+                hash_anagram[char] -= 1
+        
+        for count in hash_anagram.values():
+            if count != 0:
+                return False
+        return True
+      
+'''
+check if t is an anagram of s. 
+return TRUE t = anagram s
+return FALSE t != anagram s
+
+t = "tar"
+s = "rat"
+TRUE
+
+t = 'you'
+s = 'uoy'
+TRUE 
+
+t = 'toy'
+s = 'boy'
+FALSE
+
+sort then, loop through s first then t and compare
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return str(sorted(s)) == str(sorted(t))
+
+two pointers? one at s and another at t
+
+hashset? look at the char in each **
+
+'''
