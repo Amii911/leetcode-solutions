@@ -1,0 +1,32 @@
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        max_sum = nums[0]
+        curr_sum = 0
+        for num in nums:
+            curr_sum += num
+            max_sum = max(max_sum, curr_sum)
+            curr_sum = max(curr_sum, 0)
+        return max_sum
+        
+
+
+
+
+
+
+'''
+subarray - char that are right next to each other
+
+brute force? find all the subarrays  then find the sum of all subarrays. then keep track of the max
+nums = [5,4,-1,7,8]
+ def maxSubarray(nums):
+     max_sum = nums[0]
+     for i in len(nums):
+         cur_sum = 0 
+         for j in len(nums) - 1:
+             cur_sum += sub_val
+             max_sum = max(sur_sum, max_sum)
+
+    return max_sum
+
+'''
