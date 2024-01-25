@@ -1,0 +1,46 @@
+class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        fre_dic = {}
+
+        for i in arr:
+            if i in fre_dic.keys():
+                fre_dic[i] += 1
+            else:
+                fre_dic[i] = 1
+
+        a = sorted(list(fre_dic.values()))
+
+        while k > 0:
+             k = k - a[0]
+             a.pop(0)
+        if k == 0:
+            return len(a)
+        else:
+            return len(a) + 1
+
+
+
+
+'''
+need to return the 
+the least num of unique intergers after removing k
+
+sorting?
+
+hashtable? create a frequc dic
+iterate thru arr
+sort
+
+
+
+        c = Counter(arr)
+        c = sorted(c.values())
+        sol = 0
+        for a in c:
+            if k - a < 0:
+                break
+            else:
+                k -= a
+                sol += 1
+        return len(c) - sol
+'''
