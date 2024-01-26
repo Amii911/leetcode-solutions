@@ -1,3 +1,9 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         slow, fast = head, head
@@ -18,7 +24,6 @@ a cycle is when the linked list does not get to NULL
 
 but if cycle ll will not reach null so using tortoise and hare to have fast and slow, if cycle they will meet. If not they wont. 
 
-
 #notes from review session
 need to return True is linkedlist is a cycle
 return False if not
@@ -26,18 +31,4 @@ return False if not
 if there are two nodes and nodes repeat fast and slow then true
 
 two pointers? Fast and Slow approach
-
-
-def linkedListCycle(node):
-  slow, fast = head , head
-
-  while fast and fast.next:
-    slow = slow.next
-    fast = fast.next.next
-
-    if slow == fast:
-      return True
-
-    else:
-      return False
 '''
