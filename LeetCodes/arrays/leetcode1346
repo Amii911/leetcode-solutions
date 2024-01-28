@@ -1,0 +1,71 @@
+class Solution:
+    def checkIfExist(self, arr: List[int]) -> bool:
+        arr.sort()
+
+        def check(num):
+            if num == 0:
+                return arr.count(0) > 1
+
+            lo, hi = -1, len(arr)
+
+            while lo + 1 != hi:
+                mid = (lo + hi) // 2
+
+                if arr[mid] <= num / 2:
+                    lo = mid
+                else:
+                    hi = mid
+
+            return arr[lo] * 2 == num
+
+        for num in arr:
+            if check(num):
+                return True
+
+        return False
+'''
+check if the index of i and j exist, consider the following
+i does not equal j
+i and j are non negative && < arr
+index of i is 2x the value of index j
+
+
+approach:
+brute force. O(n^2) nested for loops to go over each element
+def brute_force(nums):
+    for i in range(len(nums)):
+        for j  in range(len(nums)):
+            if i != j:
+                if nums[i] == 2*nums[j]
+                return True
+    return False
+can improve this code by removing the nested loop. keeping the outter loop because we want to check every number in the arr.
+
+O(n)
+def removing_inner_loop(nums):
+        seen = set()
+        for i in range(len(nums)):
+            if arr[i] * 2 in seen or nums[i] / 2 in seen:
+                return True
+            seen.add(nums[i])
+        
+        return False
+
+use binary search. O(n log n)
+need to sort then search in range
+def binary_search_example(nums):
+        lo = -1 
+        hi = len(nums)
+
+    #   nums[lo] < target <= nums[hi] 
+
+        while lo + 1 != hi:
+            mid = (lo + hi) // 2
+
+            if arr[mid] < target:
+                lo = mid
+            else:
+                hi = mid
+        
+        return hi
+'''
