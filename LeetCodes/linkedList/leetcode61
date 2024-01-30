@@ -1,0 +1,32 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        pass
+
+
+'''
+rotate the linked list 
+return the list after k rotations
+
+two pointers? 
+slow, fast = head , head
+
+iterate through the list and find k and last node.... 
+
+
+k = 2
+i = 1-2-3-4
+4-1-2-3
+3-4-1-2
+o = 3-4-1-2
+
+find the size of the list then 
+find the last node
+cycle
+
+rotating by k == modulo
+'''
