@@ -34,4 +34,48 @@ o --> 2
 -- need to loop through link.. 
     fast will go every two and slow going one.
 
+approach:
+turn ll into an array time O(n) space O(n) (creating an arr)
+        nodes = []
+
+        node = head
+        while node:
+            nodes.append(node)
+            node = node.next
+
+        return nodes[len(nodes) // 2]
+
+recrusive time O(n) space
+        def getLen(head):
+            length = 0
+            while head:
+                length += 1
+                head = head.next
+            return length 
+
+        def getNode(head, steps):
+            if steps == 0:
+                return head
+            return getNode(head.next, steps - 1)
+        
+        length = getLen(head)
+        return getNode(head, length // 2)
+*when moving from iterative to recrusive you cant have a while loop
+
+iterative time O(n) space
+        def getLen(head):
+            length = 0
+            while head:
+                length += 1
+                head = head.next
+            return length 
+
+        def getNode(head, steps):
+            while steps > 0:
+                head = head.next
+                steps -= 1
+            return head
+            
+        length = getLen(head)
+        return getNode(head, length // 2)
 '''
