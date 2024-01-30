@@ -1,0 +1,27 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        freq_mag = {}
+
+        for i in range(len(magazine)):
+            if magazine[i] not in freq_mag:
+                freq_mag[magazine[i]] = 1
+            else:
+                freq_mag[magazine[i]] += 1
+
+        for i in range(len(ransomNote)):
+            if ransomNote[i] not in freq_mag or freq_mag[ransomNote[i]] == 0:
+                return False
+            else:
+                freq_mag[ransomNote[i]] -= 1
+        
+        return True
+
+
+
+'''
+need to return the true or false if all ransomNote char are found in magazine.
+
+keeping a frequency table of raNo and mag
+hashtable
+'''
+        
