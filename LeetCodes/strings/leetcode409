@@ -1,0 +1,22 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        hashtable = {}
+
+        for char in s:
+            if char not in hashtable:
+                hashtable[char] = 1
+            else:
+                hashtable[char] += 1
+        
+        length_sum = 0
+
+        for value in hashtable.values():
+            if value % 2 == 0:
+                length_sum += value
+            elif value % 2 != 0:
+                length_sum += value - 1
+        
+        if length_sum < len(s):
+            length_sum += 1
+
+        return length_sum 
