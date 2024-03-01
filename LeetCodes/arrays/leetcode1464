@@ -1,0 +1,17 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        minq = []
+
+        for num in nums:
+            heappush(minq, num)
+            if len(minq) > 2:
+                heappop(minq)
+            
+
+        return (minq[0] - 1) * (minq[1] - 1)
+
+
+
+"""
+using pq
+"""
