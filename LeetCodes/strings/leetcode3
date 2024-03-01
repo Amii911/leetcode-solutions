@@ -1,0 +1,27 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+            
+        hash_map = {}
+        result = 0
+        left = 0
+
+        for i in range(len(s)):
+            if s[i] not in hash_map:
+                hash_map[s[i]] = 1
+            else:
+                hash_map[s[i]] += 1
+            
+            while left < i and hash_map[s[i]] > 1:
+                hash_map[s[left]] -= 1
+                left += 1
+
+            length = (i - left) + 1
+
+            result = max(result, length)    
+    
+        return result  
+    
+
+#heap solution solved with code chronicales
