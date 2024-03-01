@@ -1,0 +1,50 @@
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        def binarySearch(nums):
+            left = 0 
+            right = len(nums)-1
+            while left <= right:
+                mid = (left+right) //2
+                if nums[mid] > 0:
+                    left = mid + 1
+                else:
+                    right = mid-1
+            return left
+        
+        locator = []
+
+        for i in range(len(mat)):
+            locator.append((binarySearch(mat[i]), i ))
+        
+        locator.sort(key = lambda x:x[0])
+
+        print(locator)
+
+        result = []
+        for i in range(k):
+            result.append(locator[i][1])
+        return result
+
+            
+
+"""
+2d array with 1s and 0s and k 
+return k weakest rows (sorted from weak to  strong)
+the row with the least soliders = 1s in a row
+if two rows have the same least return the oone with the smaller index
+
+binary search
+        left = 0
+        right = len(nums) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            if nums[mid] == target:
+                return mid
+            if target <= nums[mid]:
+                right = mid -1
+            else:
+                left = mid +1
+ 
+        return -1
+"""
