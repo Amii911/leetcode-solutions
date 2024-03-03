@@ -1,0 +1,22 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        hash_map = {")" : "(" , "]" : "[" , "}" : "{" }
+
+        stack =[]
+
+        for char in s:
+            if char not in hash_map:
+                stack.append(char)
+                continue
+            if not stack or stack[-1] != hash_map[char]:
+                return False
+            stack.pop()
+        return not stack
+
+'''
+return true or false is string is valid
+
+two pointers?
+
+stack?
+'''
