@@ -1,0 +1,10 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        home1 = 0
+        home2 = 0
+
+        for num in nums:
+            curr = max(home1 + num, home2)
+            home1 = home2
+            home2 = curr
+        return home2
