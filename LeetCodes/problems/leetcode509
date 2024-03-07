@@ -1,0 +1,12 @@
+CACHE = {0: 0, 1: 1}
+class Solution:
+    def fib(self, n: int) -> int:
+        if n in CACHE:
+            return CACHE[n]
+        
+        res = self.fib(n - 1) + self.fib(n - 2)
+        CACHE[n] = res
+        return res
+
+
+#need to check solution 
