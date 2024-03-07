@@ -1,3 +1,21 @@
+class Solution:
+    def fib(self, n: int) -> int:
+        if n <= 1:
+            return n
+        cache = {0:0, 1:1}
+
+        for i in range(2, n + 1):
+            cache[i] = cache[i - 1] + cache[i - 2]
+        return cache[n]
+        
+"""
+1. Create a cache that persists beyond the function call.
+   (Create a variable outside the function, i.e. a dictionary/hash map/etc.)
+2. Inside the function, before doing anything else, check for a value in the
+   cache and return it if it's there.
+3. Find every return statement in the function and make sure we are caching
+   the result.
+
 CACHE = {0: 0, 1: 1}
 class Solution:
     def fib(self, n: int) -> int:
@@ -9,4 +27,5 @@ class Solution:
         return res
 
 
-#need to check solution 
+need to check solution 
+"""
