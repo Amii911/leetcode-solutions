@@ -1,0 +1,18 @@
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        # Create a dictionary to store the index of each character in order
+        char_index = {char: index for index, char in enumerate(order)}
+        
+        # Custom sorting function based on the order in 'order'
+        def custom_sort(char):
+            return char_index.get(char, float('inf'))  # If char not in order, place it at the end
+        
+        # Sort the characters of s based on their order in order
+        sorted_s = sorted(s, key=custom_sort)
+        
+        # Join the sorted characters to form the result string
+        return ''.join(sorted_s)
+        
+
+
+#need to look at solutoion
