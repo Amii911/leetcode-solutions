@@ -1,0 +1,32 @@
+class Solution(object):
+    def canFinish(self, numCourses, prerequisites):
+
+        taken = set()
+        coursePath = {}
+
+        for i in range(numCourses):
+            coursePath[i] = []
+
+
+        for prereq in prerequisites:
+            coursePath[prereq[0]].append(prereq[1])
+
+        # print(coursePath)
+
+        while len(taken) < numCourses:
+            coursesTaken = len(taken)
+            for i in range(numCourses):
+                if coursePath[i] == []:
+                    taken.add(i)
+                else:
+                    flag = True
+                    for course in coursePath[i]:
+                        if course not in taken:
+                            flag = False
+                            break;
+                    if flag == True:
+                        taken.add(i)
+            if len(taken) == numCourses:
+                return True
+            if len(taken) == coursesTaken:
+                return False
