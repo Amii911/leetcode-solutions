@@ -1,0 +1,45 @@
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        prefixes = {}
+        for product in products:
+            for i in range(len(products)):
+                prefix = product[:i + 1]
+                if prefix not in prefixes:
+                    prefixes[prefix] = []
+                prefixes[prefix].append(product)
+        res =  []
+
+        for i in range(len(searchWord)):
+            prefix = searchWord[:i + 1]
+            suggestion = prefixes.get(prefix, [])
+            suggestion.sort()
+            res.append(suggestion[:3])
+
+        return res
+
+
+
+"""
+return an array of the suggested products after each char if searchWOrd is typed!??? 
+huh?
+
+Binary search?
+sorted needed in arry
+
+take every prefix and put it in a map(dict)
+prefix -> [list of products that have that prefix]
+        for product in products:
+            for in in range(len(products)):
+                prefix = product[:i + 1]
+        return []
+
+not using defaultdic
+        prefixes = {}
+        for product in products:
+            for in in range(len(products)):
+                prefix = product[:i + 1]
+                if prefix not in prefixes:
+                    prefixes[prefix] = []
+                prefixes[prefix].append(product)
+        return []
+"""
