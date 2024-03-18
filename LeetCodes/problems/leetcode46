@@ -1,0 +1,40 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) == 0:
+            return [nums]
+
+        last_item = nums.pop()
+        everythingElse = self.permute(nums)
+
+        result = []
+        for option in everythingElse:
+            for index in range( 0, len(option) + 1):
+                result.append(option[0:index] + [last_item] + option[index:])
+        
+        return result
+
+
+
+"""
+premutations -  a permutation of a set is, loosely speaking, an arrangement of its members into a sequence or linear order, or if the set is already ordered, a rearrangement of its elements.
+example:
+0 = 1
+1 = 1
+2 = 2
+3 = 6
+4 = 24
+5 = 120
+
+how to calculate premutations = Number of premutations = N!
+1! = 1 = 1
+2! = 2*1 = 2
+3! = 3*2*1 = 6
+4! = 4*3*2*1 = 24
+
+
+return all the possible premutations of nums
+
+recrusive solution:
+
+
+"""
