@@ -1,0 +1,32 @@
+class Solution:
+    def getMaximumGold(self, grid: List[List[int]]) -> int:
+        r = len(grid)
+        c = len(grid[0])
+
+        res = 0
+
+        visit = set()
+
+        def traverse(i, j, gold):
+            nonlocal res
+            res = max(res, gold)
+
+            if i < 0 or i >= r or j < 0 or j >= c or grid[i][j] == 0:
+                return
+            if (i, j) in visit:
+                return
+            
+            visit.add( (i, j) )
+
+            traverse(i + 1, j, gold + grid[i][j])
+            traverse(i - 1, j, gold + grid[i][j])
+            traverse(i, j + 1, gold + grid[i][j])
+            traverse(i, j - 1, gold + grid[i][j])
+
+            visit.remove( (i, j) )
+
+        for i in range(r):
+            for j in range(c):
+                traverse(i, j, 0)
+
+        return res
