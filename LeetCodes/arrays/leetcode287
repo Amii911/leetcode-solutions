@@ -1,0 +1,29 @@
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        hash_map = {}
+
+        for num in nums:
+            if num not in hash_map:
+                hash_map[num] = 1
+            else:
+                return num
+        
+"""
+return the number in nums that is repeated
+cant manipulate nums and use only extra space
+
+[3,1,2,3]
+=> 3
+
+[0,0,0]
+=> 0
+
+what is there are one or more duplicates== ACCORDING TO CONSTRAINTS NOT POSSIBLE
+[2,2,1,5,3,1]
+=> NULL 
+no sorting - can't modify nums
+
+hash_map? 
+storing the repeated 
+"""
+        
