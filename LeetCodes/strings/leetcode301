@@ -1,0 +1,37 @@
+class Solution:
+    def isValid(self, s):
+        openCount = 0
+        for c in s:
+            if c == '(':
+                openCount += 1
+            elif c == ')':
+                openCount -= 1
+                if openCount < 0:
+                    return False
+        
+        return openCount == 0
+    def removeInvalidParentheses(self, s: str) -> List[str]:
+        result = []
+
+        partialString = ""
+        def generate(index):
+            nonlocal partialString
+
+            if index == len(s):
+                if self.isValid(partialString):
+                    result.append(partialString)
+                return
+            
+            # keep the character
+            partialString += s[index]
+            generate(index + 1)
+            partialString = partialString[0 : len(partialString) - 1]
+            
+            # remove the character
+            if s[index] == '(' or s[index] == ')':
+                generate(index + 1)
+
+        generate(0)
+
+        maxLen = max(len(option) for option in result)
+        return list(set(option for option in result if len(option) == maxLen))
