@@ -1,0 +1,23 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        initialPath = []
+        result = []
+        helper(0, initialPath, nums, result)
+        return result
+
+def helper(i, path, nums, result):
+    # base case
+    if i == len(nums):
+        result.append(path.copy())
+        return
+
+    ### recursive calls ###
+    # exclude
+    helper(i + 1, path, nums, result)
+    # include
+    path.append(nums[i])
+    helper(i + 1, path, nums, result)
+    path.pop()
+
+
+#backtracking done with NYC coders
