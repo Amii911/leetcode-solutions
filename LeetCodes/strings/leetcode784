@@ -1,0 +1,21 @@
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        result = []
+        helper(0, "", s, result)
+        return result
+
+def helper(i, path, s, result):
+    if len(path) == len(s):
+        result.append(path)
+        return
+
+    # check if current character is a letter
+    if s[i].isalpha(): # letter
+        helper(i + 1, path + s[i].upper(), s, result)
+        helper(i + 1, path + s[i].lower(), s, result)
+    else: # digit
+        helper(i + 1, path + s[i], s, result)
+
+
+
+#backtracking with NYC coders
