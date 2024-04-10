@@ -1,0 +1,41 @@
+class Solution:
+    def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
+
+        #empty answer varaiables, answer1 and 2
+        ans = []
+        ans2 = []
+
+        #sort the deck, (low to high)
+        deck = sorted(deck)
+
+        # if just 1 or 2 cards, no need to run any more calculations, return deck 
+        if len(deck) < 3:
+            return deck
+
+        # to begin add 2 highest cards to ans and remove them from the deck
+        ans = deck[-2:]
+        deck.remove(deck[-1])
+        deck.remove(deck[-1])
+
+        # loop over deck in reverse order (i.e. highest to lowest)
+        for i in range(len(deck)-1, -1, -1):
+
+            # from the current answer, remove the last card ans store in variable "top"
+            top = ans[-1]
+            ans.remove(ans[-1])
+            
+            # start an answer2 list by appending the current card in loop
+            ans2.append(deck[i])
+            # next append the "top" card
+            ans2.append(top)
+            # append the old answer list
+            ans2 = ans2 + ans
+            
+            # roll the answer2 back into the original answer variable and wipe answer2 clean for the next loop 
+            ans = ans2
+            ans2 = []
+
+        return ans
+    
+
+#POTD check solution 
