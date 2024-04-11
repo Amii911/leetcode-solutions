@@ -1,0 +1,33 @@
+class Solution:
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        ans = []
+
+        for num in nums:
+            ans.append(num)
+        ans += nums
+
+        return ans
+        
+
+
+
+"""
+return new array with nums duplicated and added to the end of it 
+
+[1,2,3]
+[1,2,3,1,2,3]
+
+all positives
+possible duplocates
+cant sort.. must return in order of array
+
+brute force approach
+loop through array
+make copy add copy to end of curr arry
+
+
+or return nums+nums
+
+or return nums*2
+
+"""
