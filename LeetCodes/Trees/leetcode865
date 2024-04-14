@@ -1,0 +1,83 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
+
+        def dfs(node):
+            if not node:
+                return 0, None
+            
+            left_depth, left_subtree = dfs(node.left)
+            right_depth, right_subtree = dfs(node.right)
+            
+            if left_depth == right_depth:
+                return left_depth + 1, node
+
+            elif left_depth > right_depth:
+                return left_depth + 1, left_subtree
+
+            else:
+                return right_depth + 1, right_subtree
+
+        _, subtree = dfs(root)
+        return subtree 
+        
+'''
+Recursive
+    1. Determine your base cases
+    2. Traverse through left and right subtree
+    3. Join the results of both traversals
+
+    class Solution:
+    def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
+        stack = [(root, 0)]
+        max_depth = 0
+        depth_map = {}
+    #checking max depth
+        while stack:
+            node, depth = stack.pop()
+
+            if node:
+                depth_map[node] = depth
+                max_depth = max(max_depth, depth)
+
+                stack.append((node.left, depth + 1))
+                stack.append((node.right, depth + 1))
+        
+        
+        stack = [(root, None)]
+        deepest_nodes = []
+    #checking for subset
+        while stack:
+            node, parent = stack.pop()
+            if node:
+                if depth_map[node] == max_depth:
+                    deepest_nodes.append(node)
+
+                stack.append((node.left, node))
+                stack.append((node.right, node))
+
+        def ancestor(node):
+            if not node or node in deepest_nodes:
+                return node
+
+            left = ancestor(node.left)
+            right = ancestor(node.right)
+    
+            return node if left and right else left or right
+
+        return ancestor(root)
+
+
+        
+
+Iterative
+    1. Find the maximum depth - done
+    2. Find the subtree corresponding to this max depth - done
+    3. Return that subtreee
+    
+'''
