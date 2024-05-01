@@ -1,0 +1,38 @@
+class Solution:
+    def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
+        target.sort()
+        arr.sort()
+
+        for i in range(len(target)):
+            if arr[i] != target[i]:
+                return False
+
+        # for i in target:
+        #     if i not in arr:
+        #         return False
+
+        # for i in range(len(target)):
+        #     if arr[i] != target[i]:
+        #         return False
+        
+        return True
+    
+
+"""
+    def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
+        target.sort()
+        arr.sort()
+
+        for i in range(len(target)):
+            if arr[i] != target[i]:
+                return False
+        
+        return True
+
+
+
+    def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
+        target.sort()
+        arr.sort()
+        return target == arr
+"""
