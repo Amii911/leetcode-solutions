@@ -1,0 +1,23 @@
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        for i in range(len(nums) - 1):
+            nums[i + 1] += nums[i]
+        return nums
+
+
+
+'''
+running sum of an array = run_sum[i] = sum(nums[0]... nums[i])
+return the running sum?
+
+nums[ 0 + 1 + 2 + 3]
+
+        output = [0] * len(nums)
+        output[0] = nums[0]
+        
+        for i in range(1, len(nums)):
+            output[i] = nums[i] + output[i - 1]
+        return output
+
+
+'''
