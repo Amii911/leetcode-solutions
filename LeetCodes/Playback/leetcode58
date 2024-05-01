@@ -1,0 +1,16 @@
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        array = s.split() 
+        return len(array[-1])
+
+
+"""
+loop through string and locate last word then return word before space?
+coming from the back of the string
+[::-1] = spreak operator?
+
+   def lengthOfLastWord(self, s: str) -> int:
+        
+        return len(s.split()[-1])
+"""
+        
