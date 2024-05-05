@@ -33,6 +33,15 @@ o ->2
 
 brute force?
 that math approach....
-
+class Solution:
+    def arrangeCoins(self, n: int) -> int:
+        idx = 1
+        count = 0
+        while idx <= n:
+            n -= idx
+            idx += 1
+            count += 1
+        
+        return count
 binary search?
 """
