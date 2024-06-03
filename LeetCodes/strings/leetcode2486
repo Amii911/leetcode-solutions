@@ -1,0 +1,13 @@
+class Solution:
+    def appendCharacters(self, s: str, t: str) -> int:
+        m, n = len(s), len(t)
+        i, j = 0, 0  # Initialize two pointers for s and t
+        
+        # Traverse through both strings
+        while i < m and j < n:
+            if s[i] == t[j]:
+                j += 1  # Move pointer j if characters match
+            i += 1  # Always move pointer i
+        
+        # The number of characters to append is the remaining characters in t
+        return n - j
