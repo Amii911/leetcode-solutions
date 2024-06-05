@@ -1,0 +1,33 @@
+class Solution:
+    def commonChars(self, words: List[str]) -> List[str]:
+        unique, output = Counter(words[0]), []
+        for i in range(len(words)): 
+            freq = Counter(words[i])
+            for j in unique: 
+                if j not in freq: 
+                    unique[j] = 0
+                    continue
+                if freq[j] < unique[j]: 
+                    unique[j] = freq[j]
+        for key in unique: 
+            output += [key] * unique[key]
+        return output
+        
+        
+
+
+"""
+return all the common letters found in all the words in the arry 
+return in array with ""
+
+sorting does not matter
+duplicates to not matter (return all duplicates)
+
+brute force
+hashmap
+need to set up hash
+need to loop through each word
+find the duplicates of the word in the array 
+compare with of the letters is repeted in each string 
+return the duplicated 
+"""
